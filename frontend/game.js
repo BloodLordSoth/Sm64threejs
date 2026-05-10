@@ -60,7 +60,6 @@ function gameStart() {
     renderer.setAnimationLoop(gameLoop)
     gameBox.appendChild(renderer.domElement)
 }
-//gameStart()
 
 async function bootUp() {
     await Promise.all([
