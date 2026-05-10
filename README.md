@@ -1,5 +1,8 @@
 # Mario64 / Threejs
 
+## Demo
+- Try it live: https://sm64threejs.onrender.com
+
 ## Images
 ![screenshot1](./frontend/assets/images/ss1.png)
 ![screenshot2](./frontend/assets/images/ss2.png)
