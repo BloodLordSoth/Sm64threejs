@@ -18,36 +18,39 @@ export class EndScene {
         this.mixer = null
         this.talk = null
         this.morph = null
-        this.load()
+        this.ready = this.load()
         this.scene.add(this.object)
     }
 
     load() {
-        this.gltfloader.load(
-            this.file,
-            (glb) => {
-                this.model = glb.scene
-                this.object.add(this.model)
+        return new Promise(res => {
+            this.gltfloader.load(
+                this.file,
+                    (glb) => {
+                    this.model = glb.scene
+                
+                    this.mixer = new c.AnimationMixer(this.model)
 
-                this.mixer = new c.AnimationMixer(this.model)
+                    this.model.scale.set(3, 3, 3)
+                    this.model.rotation.x -= 0.2
 
-                this.model.scale.set(3, 3, 3)
-                this.model.rotation.x -= 0.2
+                    const talkAnim = glb.animations[0]
+                    this.talk = this.mixer.clipAction(talkAnim)
 
-                const talkAnim = glb.animations[0]
-                this.talk = this.mixer.clipAction(talkAnim)
+                    this.model.traverse((child) => {
+                        if (child.isMesh) {
+                            const ind = child.morphTargetDictionary.deadeyes
+                            child.morphTargetInfluences[ind] = 1
+                        }
+                    })
+                    this.object.add(this.model)
+                    res()
+                }
+            )
 
-                this.model.traverse((child) => {
-                    if (child.isMesh) {
-                        const ind = child.morphTargetDictionary.deadeyes
-                        child.morphTargetInfluences[ind] = 1
-                    }
-                })
-            }
-        )
-
-        this.scene.background = this.map
-        const hemiLight = new c.HemisphereLight('peach', 'white', 1)
-        this.scene.add(hemiLight)
+            this.scene.background = this.map
+            const hemiLight = new c.HemisphereLight(0xFFE5B4, 'white', 1)
+            this.scene.add(hemiLight)
+        })
     }
 }

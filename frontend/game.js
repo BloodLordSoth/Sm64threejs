@@ -60,7 +60,17 @@ function gameStart() {
     renderer.setAnimationLoop(gameLoop)
     gameBox.appendChild(renderer.domElement)
 }
-gameStart()
+//gameStart()
+
+async function bootUp() {
+    await Promise.all([
+        world.ready,
+        intro.ready,
+        ending.ready
+    ])
+    gameStart()
+}
+bootUp()
 
 function gameEnd() {
     topBar.style.display = 'none'

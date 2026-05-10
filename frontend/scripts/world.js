@@ -57,7 +57,7 @@ export class World {
         this.star1Collected = false
         this.star2Collected = false
         this.starspawn = null
-        this.load()
+        this.ready = this.load()
     }
 
     coinCollect() {
@@ -347,19 +347,19 @@ export class World {
     }
 
     load() {
-        this.textureLoader.load(
-            './assets/processing/marioskybg.jpg',
-            (texture) => {
-                this.scene.background = texture
-            }
-        )
+        return new Promise(res => {
+            this.textureLoader.load(
+                './assets/processing/marioskybg.jpg',
+                (texture) => {
+                    this.scene.background = texture
+                }
+            )
 
         this.gltfLoader.load(
             this.file,
             (glb) => {
                 const model = glb.scene
-                this.scene.add(model)
-
+                
                 model.scale.set(2, 2, 2)
 
                 model.updateMatrixWorld()
@@ -403,13 +403,10 @@ export class World {
 
                     if (child.name === 'starspawn') {
                         this.starspawn = child
-                        //console.log(child)
                     }
 
                     if (child.name.includes('brick')) {
                         const box = new c.Box3()
-                        const bhelp = new c.Box3Helper(box)
-                        //this.scene.add(bhelp)
                         box.setFromObject(child)
                         const obj = {
                             type: 'brick',
@@ -520,7 +517,7 @@ export class World {
                 })
 
                 
-
+                res()
             }
         )
 
@@ -570,5 +567,7 @@ export class World {
 
 
         this.star1.object.position.set(4, 1, -3)
+        })
+        
     }
 }

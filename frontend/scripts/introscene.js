@@ -15,7 +15,7 @@ export class Intro {
         this.isTalking = false
         this.talk = null
         this.mixer = null
-        this.load()
+        this.ready = this.load()
         this.scene.add(this.object)
     }
 
@@ -38,32 +38,35 @@ export class Intro {
     }
 
     load() {
-        this.gltfloader.load(
-            this.head,
-            (glb) => {
-                this.model = glb.scene
+        return new Promise(res => {
+            this.gltfloader.load(
+                this.head,
+                (glb) => {
+                    this.model = glb.scene
 
-                this.object.position.set(1, -1, 0)
+                    this.object.position.set(1, -1, 0)
 
-                this.model.rotation.y = Math.PI / 1
+                    this.model.rotation.y = Math.PI / 1
 
-                this.mixer = new c.AnimationMixer(this.model)
+                    this.mixer = new c.AnimationMixer(this.model)
 
-                glb.animations.forEach(child => {                    
-                    if (child.name === 'KeyAction') {
-                        this.talk = child
-                    }
-                })
+                    glb.animations.forEach(child => {                    
+                        if (child.name === 'KeyAction') {
+                            this.talk = child
+                        }
+                    })
 
-                const talk = this.mixer.clipAction(this.talk)
-                talk.play()
+                    const talk = this.mixer.clipAction(this.talk)
+                    talk.play()
 
-                this.object.add(this.model)
-            }
-        )
-
-        this.scene.background = this.map
-        const hemiLight = new c.HemisphereLight('peach', 'white', 1)
-        this.scene.add(hemiLight)
+                    this.object.add(this.model)
+                    res()
+                }
+            )
+            
+            this.scene.background = this.map
+            const hemiLight = new c.HemisphereLight(0xFFE5B4, 'white', 1)
+            this.scene.add(hemiLight)
+        })
     }
 }
