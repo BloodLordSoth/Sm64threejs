@@ -83,7 +83,7 @@ body {
 }
 #begin {
     position: absolute;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     top: 75%;
@@ -156,6 +156,21 @@ body {
     top: 90%;
     font-size: 1.1rem;
     color: #fff;
+}
+#loadBox {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    top: 0;
+    background: rgba(0, 0, 0, 0.9);
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    color: #fff;
+    z-index: 888;
+    font-family: impact;
 }
 
 @keyframes fade-out {

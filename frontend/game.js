@@ -22,6 +22,7 @@ const playGame = document.getElementById('playGame')
 const fadeBox = document.getElementById('fadeBox')
 const thanksBox = document.getElementById('thanks')
 const helpText = document.getElementById('help')
+const loadBox = document.getElementById('loadBox')
 const gameWidth = gameBox.clientWidth
 const gameHeight = gameBox.clientHeight
 
@@ -57,6 +58,8 @@ function gameInit() {
 }
 
 function gameStart() {
+    loadBox.style.display = 'none'
+    beginBtn.style.display = 'flex'
     renderer.setAnimationLoop(gameLoop)
     gameBox.appendChild(renderer.domElement)
 }
