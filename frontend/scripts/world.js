@@ -516,7 +516,8 @@ export class World {
                     this.collisionarr.push(obj)
                 })
 
-                
+                this.scene.updateMatrixWorld(true)
+                this.scene.add(model)
                 res()
             }
         )
@@ -568,6 +569,5 @@ export class World {
 
         this.star1.object.position.set(4, 1, -3)
         })
-        
     }
 }
