@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mario64</title>
+    <link rel="stylesheet" href="./styles.css"/>
+</head>
+<body>
+    <button id="begin">Start</button>
+    <button id="playGame">Play Game</button>
+    <div id="topBar">
+        <img id="redcoin" src="./assets/images/redcoin.png">
+        <h2 id="coinCount"></h2>
+    </div>
+    <div id="botBar">
+        <img id="starImg" src="./assets/images/starImg.png">
+        <h2 id="starCount"></h2>
+    </div>
+    <div id="dialogue">
+        <p id="goombyTitle">Goomby</p>
+    </div>
+    <h2 id="actionText"></h2>
+    <div id="gameBox"></div>
+    <div id="fadeBox"></div>
+    <div id="thanks">
+        <h2>Thanks for playing!</h2>
+        <p>- BloodLordSoth</p>
+    </div>
+    <p id="help">Press 0 to Fullscreen, Esc to return.</p>
+
+<script type="importmap">
+    {
+        "imports": {
+            "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+        }
+    }
+</script>
+<script type="module" src="./game.js"></script>
+</body>
+</html>

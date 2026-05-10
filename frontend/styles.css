@@ -1,0 +1,253 @@
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    background: #000;
+}
+#gameBox {
+    margin-top: 8vh;
+    width: 70vw;
+    height: 80vh;
+}
+#topBar {
+    display: none;
+    position: absolute;
+    align-items: center;
+    top: 8vh;
+    left: 14vw;
+    width: fit-content;
+    height: fit-content;
+    padding: 3px;
+    font-size: 0.8rem;
+}
+#botBar {
+    display: none;
+    position: absolute;
+    align-items: center;
+    top: 15vh;
+    left: 14vw;
+    width: fit-content;
+    height: fit-content;
+    padding: 3px;
+    font-size: 0.8rem;
+}
+#redcoin {
+    width: 80px;
+    height: 60px;
+}
+#starImg {
+    width: 80px;
+    height: 60px;
+}
+#coinCount {
+    color: #fff;
+    text-shadow: 2px 2px 2px #000;
+}
+#starCount {
+    color: #fff;
+    text-shadow: 2px 2px 2px #000;
+}
+#actionText {
+    position: absolute;
+    display: none;
+    color: #fff;
+    left: 55%;
+    top: 40%;
+    text-shadow: 2px 2px 2px #000;
+}
+#dialogue {
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5px;
+    width: 45vh;
+    height: 15vh;
+    top: 65%;
+    left: 40%;
+    background: rgba(0, 0, 0, 0.6);
+    border: 3px solid #fff;
+    border-radius: 10px;
+    color: #fff;
+    text-align: center;
+    font-size: 1.1rem;
+    white-space: pre-wrap;
+    font-family: monospace;
+}
+#goombyTitle {
+    margin: 0;
+    margin-right: auto;
+    margin-left: 10px;
+    color: yellow;
+    font-size: 1rem;
+}
+#begin {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 75%;
+    left: 45%;
+    border: none;
+    box-shadow: 3px 3px 3px black;
+    width: 10vw;
+    height: 5vh;
+    font-size: 1rem;
+    background: yellow;
+    color: #111;
+}
+#playGame {
+    position: absolute;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    top: 75%;
+    left: 45%;
+    border: none;
+    box-shadow: 3px 3px 3px black;
+    width: 10vw;
+    height: 5vh;
+    font-size: 1rem;
+    background: lightgreen;
+    color: #111;
+}
+#begin:hover {
+    box-shadow: none;
+    cursor: pointer;
+    transform: translateY(2px);
+}
+#playGame:hover {
+    box-shadow: none;
+    cursor: pointer;
+    transform: translateY(2px);
+}
+.goombyText {
+    margin: 0;
+}
+#thanks {
+    position: absolute;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #000;
+    color: #fff;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    font-size: 1.5rem;
+    z-index: 555;
+    text-shadow: 2px 2px 2px skyblue;
+}
+#fadeBox {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 200%;
+    background: black;
+    z-index: 222;
+    opacity: 0%;
+}
+#help {
+    position: absolute;
+    top: 90%;
+    font-size: 1.1rem;
+    color: #fff;
+}
+
+@keyframes fade-out {
+    from {
+        opacity: 100%;
+    }
+    to {
+        opacity: 0%;
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0%;
+    }
+    to {
+        opacity: 100%;
+    }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+    #gameBox { 
+        margin: 0;
+        width: 98vw;
+        height: 98vh;
+    }
+    #actionText {
+        font-size: 1.1rem;
+        left: 60%;
+    }
+    #dialogue {
+        width: 80vh;
+        height: 25vh;
+        top: 70%;
+        left: 30%;
+    }
+    #topBar {
+        top: 0;
+        left: 0;
+    }
+    #botBar {
+        left: 0;
+        top: 12vh;
+    }
+    #begin {
+        box-shadow: 4px 4px 4px black;
+        width: 12vw;
+        height: 10vh;
+    }
+    #playGame {
+        box-shadow: 4px 4px 4px black;
+        width: 12vw;
+        height: 10vh;
+    }
+}
+
+@media (orientation: portrait) {
+    #gameBox { 
+        margin: 0;
+        width: 90vw;
+        height: 90vh;
+    }
+    #dialogue {
+        width: 40vh;
+        height: 15vh;
+        top: 70%;
+        left: 5vw;;
+    }
+    #actionText {
+        font-size: 1.1rem;
+        left: 35%;
+        top: 30%;
+    }
+    #topBar {
+        top: 0;
+        left: 0;
+    }
+    #botBar {
+        left: 0;
+        top: 6vh;
+    }
+    #begin {
+        box-shadow: 4px 4px 4px black;
+        left: 35%;
+        width: 25vw;
+        height: 5vh;
+    }
+    #playGame {
+        box-shadow: 4px 4px 4px black;
+        left: 35%;
+        width: 25vw;
+        height: 5vh;
+    }
+}
+
